@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+	id="WebApp_ID" version="3.1">
+	
+	<!-- This is overriding /WEB-INF/applicationContext.xml -->
+	<context-param>
+			   <param-name>contextConfigLocation</param-name>
+				<param-value>classpath:movies-dao.xml,classpath:movies-service.xml</param-value>
+	</context-param>
+	
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	<servlet>
+		<servlet-name>jocker</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+		<multipart-config>
+			<location>D:/tempimage</location>
+			<max-file-size>5242880</max-file-size>
+			<max-request-size>20971520</max-request-size>
+			<file-size-threshold>0</file-size-threshold>
+		</multipart-config>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>jocker</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+	
+	
+	       <!-- 
+    WSServlet will forward your request to soap web service container
+    against requested url-pattern weatherSoapProvider
+     -->
+    <servlet>
+        <servlet-name>metro</servlet-name>
+        <servlet-class>
+          com.sun.xml.ws.transport.http.servlet.WSServlet
+        </servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    
+    <servlet-mapping>
+        <servlet-name>metro</servlet-name>
+        <url-pattern>/moviesService</url-pattern>
+    </servlet-mapping>
+	
+	
+	<session-config>
+			<session-timeout>15</session-timeout>
+	</session-config>
+	
+</web-app>
