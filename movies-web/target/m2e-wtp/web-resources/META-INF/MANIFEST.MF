@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: movies-web
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: Nagendra
+Implementation-Vendor-Id: com.movies
+Build-Jdk: 1.8.0
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/movies-parent/movies-web
+Created-By: Maven Integration for Eclipse
+
